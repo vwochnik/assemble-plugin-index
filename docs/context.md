@@ -5,60 +5,54 @@ Type: `Array`
 
 An array containing all items available for this particular index page. The contents of each element are extracted from the page's `data` object.
 
-## index
+## pagination
 Type: `Object`
 
-An object describing the state of the index page as the following code excerpt shows:
+An object describing the state of the index pagination as the following code excerpt shows:
 
 ```js
 {
-  pageIsEmpty: false,
-  pageIsFirst: true,
-  pageIsLast: false,
-  pageFirst: { /*...*/ },
-  pagePrev: { /*...*/ },
-  pageNext: { /*...*/ },
-  pageLast: { /*...*/ },
-  pages: { /*...*/ }
+  first: { /*...*/ },
+  prev: { /*...*/ },
+  next: { /*...*/ },
+  last: { /*...*/ },
+  pages: { /*...*/ },
+  isFirst: true,
+  isLast: false
 }
 ```
 
-### pageIsEmpty
-Type: `Boolean`
+### first
+Type: `String`
 
-Whether the current index page has no items.
+Relative path of the first index page in a collection of index pages.
 
-### pageIsFirst
-Type: `Boolean`
+### prev
+Type: `String`
 
-Whether the current index page is the first index page of a collection of index pages.
+Relative path of the previous index page in a collection of index pages.
 
-### pageIsLast
-Type: `Boolean`
+### next
+Type: `String`
 
-Whether the current index page is the last index page of a collection of index pages.
+Relative path of the next index page in a collection of index pages.
 
-### pageFirst
-Type: `Object`
+### last
+Type: `String`
 
-Object of the first index page in a collection of index pages.
-
-### pagePrev
-Type: `Object`
-
-Object of the previous index page in a collection of index pages.
-
-### pageNext
-Type: `Object`
-
-Object of the next index page in a collection of index pages.
-
-### pageLast
-Type: `Object`
-
-Object of the last index page in a collection of index pages.
+Relative path of the last index page in a collection of index pages.
 
 ### pages
 Type: `Array`
 
-An array of objects of all index pages.
+An array of strings of relative paths of all index pages.
+
+### isFirst
+Type: `Boolean`
+
+Whether the current index page is the first index page of a collection of index pages.
+
+### isLast
+Type: `Boolean`
+
+Whether the current index page is the last index page of a collection of index pages.

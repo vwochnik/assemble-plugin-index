@@ -9,36 +9,27 @@ In the command line, run:
 npm install --save-dev assemble-plugin-index
 ```
 
-Next, to register the plugin with Assemble in your project's `Gruntfile.js`, you can either specify the direct path to the plugin(s) (e.g. `./path/to/plugins/*.js`), or if installed via NPM, make sure the plugin is in the `devDependencies` of your `package.json`, and simply add the module's name to the `plugins` option:
+Next, in your `assemblefile.js`, insert the following line immediately after you have `require()`d `assemble`:
 
 ```js
-module.exports = function(grunt) {
-
-  // Project configuration.
-  grunt.initConfig({
-    assemble: {
-      options: {
-        plugins: ['assemble-plugin-index', 'other/plugins/*.js'],
-        collections: [{
-          name: 'pages',
-          index: {
-              template: 'index.hbs',
-              limit: 5,
-              dest: 'dist/',
-              prefix: 'index'
-          }
-        }]
-      },
-      files: {
-        'dist/': ['templates/*.hbs']
-      }
-    }
-  });
-  grunt.loadNpmTasks('assemble');
-  grunt.registerTask('default', ['assemble']);
-};
+var index = require('assemble-plugin-index')(assemble);
 ```
-If everything was installed and configured correctly, after running `grunt assemble` you should see a JSON file for each page in the `dest` directory defined in the plugin's options. The basename of each page will be used as the name of each file. Additionally, the plugin creates one or more index pages in the specified directory.
+
+Upon initialization, the module creates a new renderable `index` collection within `assemble`. Before using the plugin, you have to specify a location where `index` collections can be found:
+
+```js
+assemble.indices('templates/indices/*.hbs');
+```
+
+You can now use the plugin within a task like so:
+
+```js
+assemble.task('posts', function() {
+  assemble.src('templates/posts/*.hbs')
+    .pipe(index('posts', {itemsPerPage: 10}))
+    .pipe(assemble.dest('dist/'));
+});
+```
 
 Visit the [plugin docs](http://assemble.io/plugins/) for more info or for help getting started.
 
@@ -111,7 +102,7 @@ The templating context contains the following variables which can be used for th
 ### items
 Type: `Array`
 
-An array containing all items available for this particular index page.
+An array containing all items available for this particular index page. The contents of each element are extracted from the page's `data` object.
 
 ### index
 Type: `Object`

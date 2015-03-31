@@ -3,7 +3,7 @@ The templating context contains the following variables which can be used for th
 ## items
 Type: `Array`
 
-An array containing all items available for this particular index page.
+An array containing all items available for this particular index page. The contents of each element are extracted from the page's `data` object.
 
 ## index
 Type: `Object`

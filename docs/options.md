@@ -1,4 +1,4 @@
-## itemsPerPage
+## limit
 Type: `Number`
 Default: `10`
 

@@ -21,9 +21,15 @@ You can now use the plugin within a task like so:
 ```js
 assemble.task('posts', function() {
   assemble.src('templates/posts/*.hbs')
-    .pipe(index('posts', {itemsPerPage: 10}))
+    .pipe(index('posts', {limit: 10}))
     .pipe(assemble.dest('dist/'));
 });
+```
+
+You can also specify options for the module to be used with successive calls:
+
+```js
+assemble.option('index', {limit: 10});
 ```
 
 Visit the [plugin docs](http://assemble.io/plugins/) for more info or for help getting started.

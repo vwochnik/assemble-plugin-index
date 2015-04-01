@@ -26,13 +26,12 @@ module.exports = function(grunt) {
         eqnull: true,
         node: true
       },
-      all: ['Gruntfile.js', 'index.js', 'lib/**/*.js']
+      all: ['Gruntfile.js', 'index.js', 'lib/*.js']
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-verb');
 
   // By default, lint and generate readme.
-  grunt.registerTask('default', ['jshint', 'verb']);
+  grunt.registerTask('default', ['jshint']);
 };

@@ -1,4 +1,4 @@
-# assemble-plugin-index [![NPM version](https://badge.fury.io/js/assemble-plugin-index.svg)](http://badge.fury.io/js/assemble-plugin-index)
+# assemble-plugin-index [![NPM version](https://badge.fury.io/js/assemble-plugin-index.svg)](http://badge.fury.io/js/assemble-plugin-index)  [![Build Status](https://travis-ci.org/.svg)](https://travis-ci.org/) 
 
 > Template indexing plugin for Assemble.io.
 

@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         eqnull: true,
         node: true
       },
-      all: ['Gruntfile.js', 'index.js', 'lib/*.js']
+      all: ['Gruntfile.js', 'index.js', 'lib/*.js', 'lib/**/*.js']
     }
   });
 

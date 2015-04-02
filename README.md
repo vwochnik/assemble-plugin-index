@@ -12,7 +12,7 @@ npm install --save-dev assemble-plugin-index
 Next, in your `assemblefile.js`, insert the following line immediately after you have `require()`d `assemble`:
 
 ```js
-var index = require('assemble-plugin-index')(assemble);
+npm install --save assemble-plugin-index@0.1.0-beta.1
 ```
 
 Upon initialization, the module creates a new renderable `index` collection within `assemble`. Before using the plugin, you have to specify a location where `index` collections can be found:

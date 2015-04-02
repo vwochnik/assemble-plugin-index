@@ -25,3 +25,9 @@ When a string is given, only one property named by the specified string within t
 When an array is given, all properties specified in the array within the `data` object will be filtered.
 
 When a function is given, the function will be called with a `file` argument representing the currently processing `vinyl` file. The function must immediately return the filtered result as an `Object` containing filtered properties.
+
+## postprocess
+Type: `Function`
+Default: `undefined`
+
+A function allowing the manipulation of collected data. The function takes two arguments, the `collection` and a `callback` function. When the postprocessing is finished, the function is expected to call the `callback` function with a collection which can either be the original or a completely new one. In case an error occurs, the function is expected to call the `callback` with `null` as the first argument and the error as the second argument.

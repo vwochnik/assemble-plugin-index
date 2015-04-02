@@ -21,12 +21,14 @@ You can now use the plugin within a task like so:
 ```js
 assemble.task('posts', function() {
   assemble.src('templates/posts/*.hbs')
-    .pipe(index('posts', {limit: 10}))
+    .pipe(index('posts', {pattern: 'index:num:', limit: 10}))
     .pipe(assemble.dest('dist/'));
 });
 ```
 
-You can also specify options for the module to be used with successive calls:
+This will create `dist/index.hbs`, `dist/index1.hbs`, `dist/index2.hbs` and so forth.
+
+You can also specify `index`'s options within `assemble` itself:
 
 ```js
 assemble.option('index', {limit: 10});

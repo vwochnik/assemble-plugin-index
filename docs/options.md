@@ -24,4 +24,4 @@ When a string is given, only one property named by the specified string within t
 
 When an array is given, all properties specified in the array within the `data` object will be filtered.
 
-When a function is given, the function will be called with a `file` argument representing the currently processing `vinyl` file. The function must immediately return the filtered result.
+When a function is given, the function will be called with a `file` argument representing the currently processing `vinyl` file. The function must immediately return the filtered result as an `Object` containing filtered properties.

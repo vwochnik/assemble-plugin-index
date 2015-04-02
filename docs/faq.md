@@ -1,4 +1,4 @@
-## The file extensions of the pagination URLs don't match the actual file extension. How do I fix this?
+### The file extensions of the pagination URLs don't match the actual file extension. How do I fix this?
 This can be the case if you have configured a third-party plugin such as `gulp-extname` to change file extensions.
 
 **Solution:** Use the `assemble` builtin `{{replace}}` helper to replace file extensions. The following snippet shows a pagination with `.html` extensions:
@@ -27,7 +27,7 @@ This can be the case if you have configured a third-party plugin such as `gulp-e
 {{/with}}
 ```
 
-## How do I sort items in the collection?
+### How do I sort items in the collection?
 This is exactly what the `postprocess` option is made for! Let's assume that you have a collection of blog posts that need to be sorted by their `posted` property. When using a filter, do not forget to include the `posted` property as well!
 
 ```js

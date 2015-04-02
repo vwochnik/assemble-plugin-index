@@ -71,39 +71,11 @@ When an array is given, all properties specified in the array within the `data` 
 
 When a function is given, the function will be called with a `file` argument representing the currently processing `vinyl` file. The function must immediately return the filtered result as an `Object` containing filtered properties.
 
+## postprocess
+Type: `Function`
+Default: `undefined`
 
-## Examples
-When used with the configuration shown above, an index template might look as follows:
-
-```html
-<h1>Index</h1>
-{{#if index.pageIsEmpty}}
-  <p>Oops, nothing there yet!</p>
-{{else}}
-  <ul>
-    {{#each items}}
-        <li><a href="{{relative ../../page.dest this.dest}}">
-          {{ data.title }}
-        </a></li>
-    {{/each}}
-  </ul>
-  <ul>
-    {{#if index.pageIsFirst}}
-      <li><a href="#">Prev</a></li>
-    {{else}}
-      <li><a href="{{relative ../page.dest index.pagePrev.page.dest}}">Prev</a></li>
-    {{/if}}
-    {{#each index.pages}}
-      <li><a href="{{relative ../page.dest this.page.dest}}">{{indexPage}}</a></li>
-    {{/each}}
-    {{#if index.pageIsLast}}
-      <li><a href="#">Next</a></li>
-    {{else}}
-      <li><a href="{{relative ../page.dest index.pageNext.page.dest}}">Next</a></li>
-    {{/if}}
-  </ul>
-{{/if}}
-```
+A function allowing the manipulation of collected data. The function takes two arguments, the `collection` and a `callback` function. When the postprocessing is finished, the function is expected to call the `callback` function with a collection which can either be the original or a completely new one. In case an error occurs, the function is expected to call the `callback` with `null` as the first argument and the error as the second argument.
 
 
 ## Context
@@ -169,6 +141,90 @@ Whether the current index page is the first index page of a collection of index 
 Type: `Boolean`
 
 Whether the current index page is the last index page of a collection of index pages.
+
+
+## Template
+The following listing shows an example `index` template:
+
+```html
+<ul>
+  {{#each items}}
+    <li><a href="{{url}}">{{title}}</a></li>
+  {{/each}}
+</ul>
+{{#with pagination}}
+  <ul>
+    {{#if isFirst}}
+      <li><a>Prev</a></li>
+    {{else}}
+      <li><a href="{{prev}}">Prev</a></li>
+    {{/if}}
+    {{#each pages}}
+      {{#is this ../current}}
+        <li><a>{{@index}}</a></li>
+      {{else}}
+        <li><a href="{{this}}">{{@index}}</a></li>
+      {{/is}}
+    {{/each}}
+    {{#if isLast}}
+      <li><a>Next</a></li>
+    {{else}}
+      <li><a href="{{last}}">Next</a></li>
+    {{/if}}
+  </ul>
+{{/with}}
+```
+
+
+## Frequently Asked Questions
+## The file extensions of the pagination URLs don't match the actual file extension. How do I fix this?
+This can be the case if you have configured a third-party plugin such as `gulp-extname` to change file extensions.
+
+**Solution:** Use the `assemble` builtin `{{replace}}` helper to replace file extensions. The following snippet shows a pagination with `.html` extensions:
+
+```html
+{{#with pagination}}
+  <ul>
+    {{#if isFirst}}
+      <li><a>Prev</a></li>
+    {{else}}
+      <li><a href="{{replace prev '.hbs' '.html'}}">Prev</a></li>
+    {{/if}}
+    {{#each pages}}
+      {{#is this ../current}}
+        <li><a>{{@index}}</a></li>
+      {{else}}
+        <li><a href="{{replace this '.hbs' '.html'}}">{{@index}}</a></li>
+      {{/is}}
+    {{/each}}
+    {{#if isLast}}
+      <li><a>Next</a></li>
+    {{else}}
+      <li><a href="{{replace last '.hbs' '.html'}}">Next</a></li>
+    {{/if}}
+  </ul>
+{{/with}}
+```
+
+## How do I sort items in the collection?
+This is exactly what the `postprocess` option is made for! Let's assume that you have a collection of blog posts that need to be sorted by their `posted` property. When using a filter, do not forget to include the `posted` property as well!
+
+```js
+assemble.task('posts', function() {
+  assemble.src('templates/posts/*.hbs')
+    .pipe(index('posts', {
+      pattern: 'index:num:',
+      filter: ['title', 'posted', 'summary']
+      limit: 10,
+      postprocess: function(items, cb) {
+        cb(items.sort(function(item1, item2) {
+          return item2.posted - item1.posted;
+        }));
+      }
+    }))
+    .pipe(assemble.dest('dist/'));
+});
+```
 
 
 ## Authors

@@ -1,22 +1,17 @@
-In the command line, run:
-
-```bash
-npm install --save-dev {%= name %}
-```
-
-Next, in your `assemblefile.js`, insert the following line immediately after you have `require()`d `assemble`:
+In your `assemblefile.js`, insert the following line immediately after you have `require()`d `assemble`:
 
 ```js
-npm install --save assemble-plugin-index@0.1.0-beta.1
+var index = require('assemble-plugin-index')(assemble);
 ```
 
-Upon initialization, the module creates a new renderable `index` collection within `assemble`. Before using the plugin, you have to specify a location where `index` collections can be found:
+It is important that you pass the `assemble` instance variable to the module for initialization.
+Upon initialization, the module creates a new renderable `index` collection within `assemble`. Before using the plugin in the task pipeline, you have to specify a location where `index` collections can be found:
 
 ```js
 assemble.indices('templates/indices/*.hbs');
 ```
 
-You can now use the plugin within a task like so:
+Now, the plugin can be used within the task pipeline. The following example demonstrates the use of the `index` plugin used within a task pipeline:
 
 ```js
 assemble.task('posts', function() {
@@ -28,7 +23,7 @@ assemble.task('posts', function() {
 
 This will create `dist/index.hbs`, `dist/index1.hbs`, `dist/index2.hbs` and so forth.
 
-You can also specify `index`'s options within `assemble` itself:
+You can also specify options globally using the `assemble` API:
 
 ```js
 assemble.option('index', {limit: 10});

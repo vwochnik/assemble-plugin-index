@@ -5,7 +5,7 @@ Default: `10`
 Maximum collection items per index page.
 
 ## pattern
-Type: `String`
+Type: `String`, 'Function'
 Default: Template name with attached page number
 
 File naming pattern with attached page number and without file extension.
@@ -13,6 +13,8 @@ By default, files are named by the index template's name plus an additional page
 
 The string `:num:` is replaced with the page number or removed for
 the first page.
+
+When a function is given, it is called for every page generated and must return a string without file extension. The function is called with the page number, `index`, and an array of `items` that are going to be added to the page.
 
 ## filter
 Type: `String`, `Array`, `Function`

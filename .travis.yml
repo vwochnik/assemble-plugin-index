@@ -1,8 +1,13 @@
 sudo: false
 language: node_js
 node_js:
-  - "0.10"
-  - "0.12"
-  - "iojs"
+- '0.10'
+- '0.12'
+- iojs
 git:
   depth: 10
+deploy:
+  provider: npm
+  email: v.wochnik@gmail.com
+  api_key:
+    secure: Cb7mBQ99gKipP8GlVKEgO0KUAhm3NqQ40PKSg4E3SZ+XsqR9hp0vBSu6c8I0mkf5fSwSAUzkcl81Jht2YPhE4YrKoc8cwHT04NWNDQu/HmWD661sH9/5W2k9iB0ALRGOhV+vb3qmS/Na1INci0OJowrhHaULhNDZ5Tgp2Wr8rtI=

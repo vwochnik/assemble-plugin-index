@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+tmp
+*.sublime-*
+*~
+Gruntfile.js
+.travis.yml
+.verb.md
+.jshintrc
+.editorconfig
+.gitignore

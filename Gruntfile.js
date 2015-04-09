@@ -14,17 +14,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true
+        jshintrc: '.jshintrc'
       },
       all: ['Gruntfile.js', 'index.js', 'lib/*.js', 'lib/**/*.js']
     }

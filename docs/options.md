@@ -27,3 +27,9 @@ When a string is given, only one property named by the specified string within t
 When an array is given, all properties specified in the array within the `data` object will be filtered.
 
 When a function is given, the function will be called with a `file` argument representing the currently processing `vinyl` file. The function must immediately return the filtered result as an `Object` containing filtered properties.
+
+## process
+Type: `Array`, `Function`
+Default: `function(items, cb) { return cb(null, items); }`
+
+A single or an array of chained post-processing functions. Each function must call the `callback(error, items)` when finished. If an `error` occurred, the chain is broken. Otherwise `error` must be `null` and `items` must contain all items to index.

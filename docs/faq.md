@@ -37,11 +37,13 @@ assemble.task('posts', function() {
       pattern: 'index:num:',
       filter: ['title', 'posted', 'summary']
       limit: 10,
-      postprocess: function(items, cb) {
-        cb(items.sort(function(item1, item2) {
-          return item2.posted - item1.posted;
-        }));
-      }
+      process: [
+        function(items, cb) {
+          cb(null, items.sort(function(item1, item2) {
+            return item2.posted - item1.posted;
+          }));
+        }
+      ]
     }))
     .pipe(assemble.dest('dist/'));
 });

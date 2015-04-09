@@ -33,8 +33,7 @@
     "object.omit": "^1.1.0",
     "object.pick": "^1.1.1",
     "template-utils": "^0.5.1",
-    "through2": "^0.6.3",
-    "vinyl": "^0.4.6"
+    "through2": "^0.6.3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

@@ -24,6 +24,9 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
   "dependencies": {
     "arr-diff": "^1.0.1",
     "clone-deep": "^0.1.1",
@@ -37,7 +40,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "~0.10.0"
+    "grunt-contrib-jshint": "~0.10.0",
+    "gulp-extname": "^0.2.0"
   },
   "keywords": [
     "assemble",

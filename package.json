@@ -21,6 +21,10 @@
     }
   ],
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/"
+  ],
   "engines": {
     "node": ">= 0.8.0"
   },

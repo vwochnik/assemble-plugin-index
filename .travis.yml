@@ -6,6 +6,8 @@ node_js:
 - iojs
 git:
   depth: 10
+before_install:
+- npm install -g grunt-cli
 deploy:
   provider: npm
   email: v.wochnik@gmail.com

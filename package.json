@@ -29,7 +29,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "grunt"
   },
   "dependencies": {
     "arr-diff": "^1.0.1",
@@ -45,7 +45,9 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
-    "gulp-extname": "^0.2.0"
+    "grunt-mocha-test": "^0.12.7",
+    "gulp-extname": "^0.2.0",
+    "mocha": "^2.2.4"
   },
   "keywords": [
     "assemble",

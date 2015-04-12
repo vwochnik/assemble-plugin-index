@@ -17,11 +17,20 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc'
       },
       all: ['Gruntfile.js', 'index.js', 'lib/*.js', 'lib/**/*.js']
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+        },
+        src: ['test/*.js']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   // By default, lint and generate readme.
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['jshint', 'mochaTest']);
 };

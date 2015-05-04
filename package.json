@@ -1,7 +1,7 @@
 {
   "name": "assemble-plugin-index",
   "description": "Template indexing plugin for Assemble.io.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "homepage": "https://github.com/vwochnik/assemble-plugin-index",
   "author": {
     "name": "Vincent Wochnik",
@@ -32,10 +32,10 @@
     "arr-diff": "^1.0.1",
     "clone-deep": "^0.1.1",
     "extend-shallow": "^1.1.2",
-    "gulp-util": "^3.0.4",
     "kind-of": "^1.1.0",
     "object.omit": "^1.1.0",
     "object.pick": "^1.1.1",
+    "plugin-error": "^0.1.1",
     "template-utils": "^0.5.1",
     "through2": "^0.6.3"
   },
